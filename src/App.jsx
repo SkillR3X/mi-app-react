@@ -18,6 +18,8 @@ import FormularioEvento from './components/FormularioEvento'
 import VisorDocumento from './components/VisorDocumento'
 import TemporizadorPomodoro from './components/TemporizadorPomodoro'
 import ConfiguracionUsuario from './components/ConfiguracionUsuario'
+import PruebaNotas from './components/PruebaNotas'
+import { NotasProvider } from './context/NotasContext'
 import './App.css'
 
 function App() {
@@ -25,11 +27,12 @@ function App() {
   const [mostrarVisor, setMostrarVisor] = useState(true)
 
   return (
-    <main>
-      <div className="app-container">
-        <header>
-          <h1>Ejercicios de componentes</h1>
-        </header>
+    <NotasProvider>
+      <main>
+        <div className="app-container">
+          <header>
+            <h1>Ejercicios de componentes</h1>
+          </header>
 
         <Acordeon titulo="Perfil" defaultExpanded>
           <Perfil />
@@ -123,15 +126,20 @@ function App() {
           <FormularioEvento />
         </Acordeon>
 
-        <Acordeon titulo="Configuración de usuario">
-          <ConfiguracionUsuario />
-        </Acordeon>
+          <Acordeon titulo="Configuración de usuario">
+            <ConfiguracionUsuario />
+          </Acordeon>
 
-        <Acordeon titulo="Temporizador Pomodoro">
-          <TemporizadorPomodoro />
-        </Acordeon>
-      </div>
-    </main>
+          <Acordeon titulo="Contexto de notas">
+            <PruebaNotas />
+          </Acordeon>
+
+          <Acordeon titulo="Temporizador Pomodoro">
+            <TemporizadorPomodoro />
+          </Acordeon>
+        </div>
+      </main>
+    </NotasProvider>
   )
 }
 
