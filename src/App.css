@@ -182,3 +182,38 @@
     border-right-color: var(--border);
   }
 }
+
+/* Minimal app layout styles added for exercises */
+.app-container {
+  max-width: 1024px;
+  margin: 24px auto;
+  padding: 20px;
+  display: grid;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.exercise-section {
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  padding: 12px 16px;
+  background: #ffffff;
+}
+
+.exercise-title {
+  margin: 0 0 8px 0;
+  font-size: 1.05rem;
+}
+
+/* Make tables and lists more readable */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table th,
+table td {
+  padding: 8px 10px;
+  border: 1px solid #eaeaea;
+  text-align: left;
+}
+
