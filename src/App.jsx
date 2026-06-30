@@ -17,6 +17,7 @@ import ListaContactos from './components/ListaContactos'
 import FormularioEvento from './components/FormularioEvento'
 import VisorDocumento from './components/VisorDocumento'
 import TemporizadorPomodoro from './components/TemporizadorPomodoro'
+import ConfiguracionUsuario from './components/ConfiguracionUsuario'
 import './App.css'
 
 function App() {
@@ -120,6 +121,10 @@ function App() {
 
         <Acordeon titulo="Formulario de evento">
           <FormularioEvento />
+        </Acordeon>
+
+        <Acordeon titulo="Configuración de usuario">
+          <ConfiguracionUsuario />
         </Acordeon>
 
         <Acordeon titulo="Temporizador Pomodoro">

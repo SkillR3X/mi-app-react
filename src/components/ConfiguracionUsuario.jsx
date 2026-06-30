@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage'
 
 const STORAGE_KEY = 'config-usuario'
 
@@ -8,30 +8,8 @@ const defaultConfig = {
   notificaciones: true,
 }
 
-function leerConfiguracionInicial() {
-  try {
-    const guardado = localStorage.getItem(STORAGE_KEY)
-    if (!guardado) return defaultConfig
-
-    const parsed = JSON.parse(guardado)
-
-    return {
-      nombre: typeof parsed?.nombre === 'string' ? parsed.nombre : defaultConfig.nombre,
-      tema: parsed?.tema === 'oscuro' ? 'oscuro' : 'claro',
-      notificaciones:
-        typeof parsed?.notificaciones === 'boolean' ? parsed.notificaciones : defaultConfig.notificaciones,
-    }
-  } catch {
-    return defaultConfig
-  }
-}
-
 function ConfiguracionUsuario() {
-  const [configuracion, setConfiguracion] = useState(() => leerConfiguracionInicial())
-
-  useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(configuracion))
-  }, [configuracion])
+  const [configuracion, setConfiguracion] = useLocalStorage(STORAGE_KEY, defaultConfig)
 
   const handleChange = (event) => {
     const { name, type, value, checked } = event.target
@@ -43,7 +21,11 @@ function ConfiguracionUsuario() {
   }
 
   const handleReset = () => {
-    localStorage.removeItem(STORAGE_KEY)
+    try {
+      localStorage.removeItem(STORAGE_KEY)
+    } catch {
+      // Silencioso por requerimiento
+    }
     setConfiguracion(defaultConfig)
   }
 
