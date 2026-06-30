@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Perfil from './components/Perfil'
 import Clima from './components/Clima'
 import EstadoPedido from './components/EstadoPedido'
@@ -9,9 +10,14 @@ import Tarjeta from './components/Tarjeta'
 import Dashboard from './components/Dashboard'
 import Alerta from './components/Alerta'
 import Acordeon from './components/Acordeon'
+import BotonAccion from './components/BotonAccion'
+import Modal from './components/Modal'
+import Contador from './components/Contador'
 import './App.css'
 
 function App() {
+  const [modalOpen, setModalOpen] = useState(false)
+
   return (
     <main>
       <div className="app-container">
@@ -89,6 +95,22 @@ function App() {
           <Acordeon titulo="Sección 3">
             <p>Contenido de la sección 3.</p>
           </Acordeon>
+        </section>
+
+        <section className="exercise-section">
+          <h2 className="exercise-title">Modal</h2>
+          <BotonAccion texto="Abrir modal" onClick={() => setModalOpen(true)} />
+          <Modal titulo="Mi modal" abierto={modalOpen}>
+            <p>Este es el contenido del modal.</p>
+            <div style={{ marginTop: 12 }}>
+              <BotonAccion texto="Cerrar" variante="secundario" onClick={() => setModalOpen(false)} />
+            </div>
+          </Modal>
+        </section>
+
+        <section className="exercise-section">
+          <h2 className="exercise-title">Contador</h2>
+          <Contador />
         </section>
       </div>
     </main>
