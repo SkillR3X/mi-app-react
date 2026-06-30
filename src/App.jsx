@@ -3,6 +3,7 @@ import Clima from './components/Clima'
 import EstadoPedido from './components/EstadoPedido'
 import MensajeBienvenida from './components/MensajeBienvenida'
 import ListaHabilidades from './components/ListaHabilidades'
+import ListaProductos from './components/ListaProductos'
 import './App.css'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
       <EstadoPedido />
       <MensajeBienvenida />
       <ListaHabilidades />
+      <ListaProductos />
     </main>
   )
 }
