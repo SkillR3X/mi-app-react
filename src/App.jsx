@@ -6,6 +6,7 @@ import ListaHabilidades from './components/ListaHabilidades'
 import ListaProductos from './components/ListaProductos'
 import ListaTareas from './components/ListaTareas'
 import Tarjeta from './components/Tarjeta'
+import Dashboard from './components/Dashboard'
 import './App.css'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <ListaProductos />
       <ListaTareas />
       <Tarjeta />
+      <Dashboard />
     </main>
   )
 }
