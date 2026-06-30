@@ -4,6 +4,7 @@ import EstadoPedido from './components/EstadoPedido'
 import MensajeBienvenida from './components/MensajeBienvenida'
 import ListaHabilidades from './components/ListaHabilidades'
 import ListaProductos from './components/ListaProductos'
+import ListaTareas from './components/ListaTareas'
 import './App.css'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <MensajeBienvenida />
       <ListaHabilidades />
       <ListaProductos />
+      <ListaTareas />
     </main>
   )
 }
