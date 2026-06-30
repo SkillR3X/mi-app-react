@@ -13,6 +13,8 @@ import Acordeon from './components/Acordeon'
 import BotonAccion from './components/BotonAccion'
 import Modal from './components/Modal'
 import Contador from './components/Contador'
+import ListaContactos from './components/ListaContactos'
+import FormularioEvento from './components/FormularioEvento'
 import './App.css'
 
 function App() {
@@ -25,53 +27,43 @@ function App() {
           <h1>Ejercicios de componentes</h1>
         </header>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Perfil</h2>
+        <Acordeon titulo="Perfil" defaultExpanded>
           <Perfil />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Clima</h2>
+        <Acordeon titulo="Clima">
           <Clima />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Estado del pedido</h2>
+        <Acordeon titulo="Estado del pedido">
           <EstadoPedido />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Mensaje de bienvenida</h2>
+        <Acordeon titulo="Mensaje de bienvenida">
           <MensajeBienvenida />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Lista de habilidades</h2>
+        <Acordeon titulo="Lista de habilidades">
           <ListaHabilidades />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Lista de productos</h2>
+        <Acordeon titulo="Lista de productos">
           <ListaProductos />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Lista de tareas</h2>
+        <Acordeon titulo="Lista de tareas">
           <ListaTareas />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Tarjeta</h2>
+        <Acordeon titulo="Tarjeta">
           <Tarjeta />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Dashboard</h2>
+        <Acordeon titulo="Dashboard">
           <Dashboard />
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Alertas</h2>
+        <Acordeon titulo="Alertas">
           <Alerta tipo="exito" titulo="Éxito">
             Operación completada correctamente.
           </Alerta>
@@ -82,10 +74,9 @@ function App() {
             Ocurrió un problema al procesar la solicitud.
           </Alerta>
           <Alerta titulo="Información">Este es un mensaje informativo.</Alerta>
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Acordeones</h2>
+        <Acordeon titulo="Acordeones (ejemplo)">
           <Acordeon titulo="Sección 1">
             <p>Contenido de la sección 1.</p>
           </Acordeon>
@@ -95,23 +86,31 @@ function App() {
           <Acordeon titulo="Sección 3">
             <p>Contenido de la sección 3.</p>
           </Acordeon>
-        </section>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Modal</h2>
-          <BotonAccion texto="Abrir modal" onClick={() => setModalOpen(true)} />
-          <Modal titulo="Mi modal" abierto={modalOpen}>
-            <p>Este es el contenido del modal.</p>
-            <div style={{ marginTop: 12 }}>
-              <BotonAccion texto="Cerrar" variante="secundario" onClick={() => setModalOpen(false)} />
-            </div>
-          </Modal>
-        </section>
+        <Acordeon titulo="Modal">
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+            <BotonAccion texto="Abrir modal" onClick={() => setModalOpen(true)} />
+            <Modal titulo="Mi modal" abierto={modalOpen}>
+              <p>Este es el contenido del modal.</p>
+              <div style={{ marginTop: 12 }}>
+                <BotonAccion texto="Cerrar" variante="secundario" onClick={() => setModalOpen(false)} />
+              </div>
+            </Modal>
+          </div>
+        </Acordeon>
 
-        <section className="exercise-section">
-          <h2 className="exercise-title">Contador</h2>
+        <Acordeon titulo="Contador">
           <Contador />
-        </section>
+        </Acordeon>
+
+        <Acordeon titulo="Lista de contactos">
+          <ListaContactos />
+        </Acordeon>
+
+        <Acordeon titulo="Formulario de evento">
+          <FormularioEvento />
+        </Acordeon>
       </div>
     </main>
   )
