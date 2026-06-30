@@ -7,6 +7,8 @@ import ListaProductos from './components/ListaProductos'
 import ListaTareas from './components/ListaTareas'
 import Tarjeta from './components/Tarjeta'
 import Dashboard from './components/Dashboard'
+import Alerta from './components/Alerta'
+import Acordeon from './components/Acordeon'
 import './App.css'
 
 function App() {
@@ -60,6 +62,33 @@ function App() {
         <section className="exercise-section">
           <h2 className="exercise-title">Dashboard</h2>
           <Dashboard />
+        </section>
+
+        <section className="exercise-section">
+          <h2 className="exercise-title">Alertas</h2>
+          <Alerta tipo="exito" titulo="Éxito">
+            Operación completada correctamente.
+          </Alerta>
+          <Alerta tipo="advertencia" titulo="Advertencia">
+            Ten en cuenta los cambios recientes.
+          </Alerta>
+          <Alerta tipo="error" titulo="Error">
+            Ocurrió un problema al procesar la solicitud.
+          </Alerta>
+          <Alerta titulo="Información">Este es un mensaje informativo.</Alerta>
+        </section>
+
+        <section className="exercise-section">
+          <h2 className="exercise-title">Acordeones</h2>
+          <Acordeon titulo="Sección 1">
+            <p>Contenido de la sección 1.</p>
+          </Acordeon>
+          <Acordeon titulo="Sección 2">
+            <p>Contenido de la sección 2.</p>
+          </Acordeon>
+          <Acordeon titulo="Sección 3">
+            <p>Contenido de la sección 3.</p>
+          </Acordeon>
         </section>
       </div>
     </main>
