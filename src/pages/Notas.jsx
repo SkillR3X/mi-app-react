@@ -79,27 +79,18 @@ export default function Notas() {
           {fijadas.length > 0 && (
             <div style={{ marginBottom: 12 }}>
               <h3 style={{ margin: '8px 0' }}>Fijadas</h3>
-              <div style={{ display: 'grid', gap: 8 }}>
+              <div className="note-grid">
                 {fijadas.map((nota) => (
                   <Link
                     key={nota.id}
                     to={`/notas/${nota.id}`}
                     style={{ textDecoration: 'none', color: 'inherit' }}
                   >
-                    <article
-                      style={{
-                        border: '1px solid #e5e7eb',
-                        padding: 12,
-                        borderRadius: 6,
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'flex-start',
-                      }}
-                    >
+                    <article className={`note-card ${nota.fijada ? 'fijada' : ''}`}>
                       <div>
                         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                           <strong>{nota.titulo}</strong>
-                          <span style={{ background: '#eef2ff', padding: '2px 6px', borderRadius: 4, fontSize: 12 }}>{nota.categoria}</span>
+                          <span className={`badge badge-${nota.categoria}`}>{nota.categoria}</span>
                           <span title="Fijada">📌</span>
                         </div>
                         <div style={{ marginTop: 6, color: '#374151' }}>
@@ -110,13 +101,13 @@ export default function Notas() {
 
                       <div>
                         <button
+                          className="btn btn-secondary"
                           onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
                             toggleFijada(nota.id)
                           }}
                           aria-label="Toggle fijada"
-                          style={{ padding: '6px 8px' }}
                         >
                           {nota.fijada ? 'Desfijar' : 'Fijar'}
                         </button>
@@ -131,27 +122,18 @@ export default function Notas() {
           {noFijadas.length > 0 && (
             <div>
               {fijadas.length > 0 && <hr style={{ margin: '12px 0' }} />}
-              <div style={{ display: 'grid', gap: 8 }}>
+              <div className="note-grid">
                 {noFijadas.map((nota) => (
                   <Link
                     key={nota.id}
                     to={`/notas/${nota.id}`}
                     style={{ textDecoration: 'none', color: 'inherit' }}
                   >
-                    <article
-                      style={{
-                        border: '1px solid #e5e7eb',
-                        padding: 12,
-                        borderRadius: 6,
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'flex-start',
-                      }}
-                    >
+                    <article className={`note-card ${nota.fijada ? 'fijada' : ''}`}>
                       <div>
                         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                           <strong>{nota.titulo}</strong>
-                          <span style={{ background: '#f0fdf4', padding: '2px 6px', borderRadius: 4, fontSize: 12 }}>{nota.categoria}</span>
+                          <span className={`badge badge-${nota.categoria}`}>{nota.categoria}</span>
                           {nota.fijada && <span title="Fijada">📌</span>}
                         </div>
                         <div style={{ marginTop: 6, color: '#374151' }}>
@@ -162,13 +144,13 @@ export default function Notas() {
 
                       <div>
                         <button
+                          className="btn btn-secondary"
                           onClick={(e) => {
                             e.preventDefault()
                             e.stopPropagation()
                             toggleFijada(nota.id)
                           }}
                           aria-label="Toggle fijada"
-                          style={{ padding: '6px 8px' }}
                         >
                           {nota.fijada ? 'Desfijar' : 'Fijar'}
                         </button>

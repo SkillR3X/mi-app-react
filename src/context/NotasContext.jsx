@@ -1,4 +1,6 @@
-import { createContext, useContext, useReducer } from 'react'
+import { createContext, useContext, useReducer, useEffect } from 'react'
+import useLocalStorage from '../hooks/useLocalStorage'
+import { useNotificaciones } from './NotificacionContext'
 
 const NotasContext = createContext(null)
 
@@ -65,12 +67,36 @@ function reducer(estado, accion) {
 }
 
 function NotasProvider({ children }) {
-  const [estado, dispatch] = useReducer(reducer, estadoInicial)
+  const STORAGE_KEY = 'mis_notas_v1'
+  const [persistido, setPersistido] = useLocalStorage(STORAGE_KEY, estadoInicial)
 
-  const agregarNota = (nota) => dispatch({ type: 'AGREGAR_NOTA', payload: nota })
-  const eliminarNota = (id) => dispatch({ type: 'ELIMINAR_NOTA', payload: id })
-  const editarNota = (id, datos) => dispatch({ type: 'EDITAR_NOTA', payload: { id, datos } })
-  const toggleFijada = (id) => dispatch({ type: 'TOGGLE_FIJADA', payload: id })
+  const [estado, dispatch] = useReducer(reducer, persistido)
+  const { mostrar } = useNotificaciones()
+
+  useEffect(() => {
+    setPersistido(estado)
+  }, [estado, setPersistido])
+
+  const agregarNota = (nota) => {
+    dispatch({ type: 'AGREGAR_NOTA', payload: nota })
+    if (mostrar) mostrar('Nota agregada', 'success')
+  }
+
+  const eliminarNota = (id) => {
+    dispatch({ type: 'ELIMINAR_NOTA', payload: id })
+    if (mostrar) mostrar('Nota eliminada', 'warning')
+  }
+
+  const editarNota = (id, datos) => {
+    dispatch({ type: 'EDITAR_NOTA', payload: { id, datos } })
+    if (mostrar) mostrar('Nota actualizada', 'success')
+  }
+
+  const toggleFijada = (id) => {
+    dispatch({ type: 'TOGGLE_FIJADA', payload: id })
+    if (mostrar) mostrar('Estado de fijada actualizado')
+  }
+
   const cambiarFiltro = (filtro) => dispatch({ type: 'CAMBIAR_FILTRO', payload: filtro })
   const cambiarBusqueda = (busqueda) => dispatch({ type: 'CAMBIAR_BUSQUEDA', payload: busqueda })
 
