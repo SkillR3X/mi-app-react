@@ -15,10 +15,12 @@ import Modal from './components/Modal'
 import Contador from './components/Contador'
 import ListaContactos from './components/ListaContactos'
 import FormularioEvento from './components/FormularioEvento'
+import VisorDocumento from './components/VisorDocumento'
 import './App.css'
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false)
+  const [mostrarVisor, setMostrarVisor] = useState(true)
 
   return (
     <main>
@@ -102,6 +104,13 @@ function App() {
 
         <Acordeon titulo="Contador">
           <Contador />
+        </Acordeon>
+
+        <Acordeon titulo="Visor de documento">
+          <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 8 }}>
+            <BotonAccion texto={mostrarVisor ? 'Simular desmontaje' : 'Montar visor'} variante="secundario" onClick={() => setMostrarVisor((s) => !s)} />
+          </div>
+          {mostrarVisor && <VisorDocumento />}
         </Acordeon>
 
         <Acordeon titulo="Lista de contactos">
